@@ -251,23 +251,21 @@ public class SortSearch {
               
         }
         
-        public void splitPoint(int[] intArray, int firstIndex, int lastIndex){
+        public int splitPoint(int[] intArray, int firstIndex, int lastIndex){
             
             int index = firstIndex + 1;
+            int otherIndex = lastIndex;
             int compareVal = intArray[firstIndex];
-
-            System.out.println(compareVal);
-
 
             while(index < lastIndex){
 
-                while(intArray[index] <= compareVal){
+                while(intArray[index] <= compareVal && index != intArray.length - 1){
 
                     index++;
 
                 }
 
-                while(intArray[lastIndex] > compareVal){
+                while(intArray[lastIndex] > compareVal && otherIndex != firstIndex){
 
                     lastIndex--;
 
@@ -285,11 +283,11 @@ public class SortSearch {
 
             }
 
-            System.out.println(Arrays.toString(intArray));
-
             int moveInt = intArray[index - 1];
             intArray[index - 1] = compareVal;
             intArray[firstIndex] = moveInt;
+
+            return (index - 1);
 
 
         }
@@ -304,7 +302,7 @@ public class SortSearch {
         // SortSearch bubbleSorted = new SortSearch(numElements);
         // bubbleSorted.bubbleSort(bubbleSorted.intArray, 0);                     //Second parameter is 0 for ascending and any other int for descending.
         // endTime = System.nanoTime();
-        // totalTime = (endTime - startTime)/1000000000;
+        // totalTime = (endTime - startTime)/1000000000.0;
         // System.out.println("Total Time Taken: " + totalTime);
 
         // System.out.println();
@@ -316,7 +314,7 @@ public class SortSearch {
         // SortSearch selectionSorted = new SortSearch(numElements);
         // selectionSorted.selectionSort(selectionSorted.intArray, 0);
         // endTime = System.nanoTime();
-        // totalTime = (endTime - startTime)/1000000000;
+        // totalTime = (endTime - startTime)/1000000000.0;
         // System.out.println("Total Time Taken: " + totalTime);
         
         // System.out.println();
@@ -328,7 +326,7 @@ public class SortSearch {
         // SortSearch insertionSorted = new SortSearch(numElements);
         // insertionSorted.insertionSort(insertionSorted.intArray, 0);
         // endTime = System.nanoTime();
-        // totalTime = (endTime - startTime)/1000000000;
+        // totalTime = (endTime - startTime)/1000000000.0;
         // System.out.println("Total Time Taken: " + totalTime);
         
         // System.out.println();
@@ -340,35 +338,33 @@ public class SortSearch {
         // SortSearch mergeSorted = new SortSearch(numElements);
         // mergeSorted.mergeSort(mergeSorted.intArray);
         // endTime = System.nanoTime();
-        // totalTime = (endTime - startTime)/1000000000;
+        // totalTime = (endTime - startTime)/1000000000.0;
         // System.out.println("Total Time Taken: " + totalTime);
 
         // System.out.println();
         
-        numElements = 10000000;
-        startTime = System.nanoTime();
-        System.out.println("Merge Sort (Recursive):");
-        System.out.println("Number of Elements: " + numElements);
-        SortSearch recursiveMergeSorted = new SortSearch(numElements);
-        recursiveMergeSorted.recursiveMergeSort(0, recursiveMergeSorted.intArray.length - 1);
-        endTime = System.nanoTime();
-        totalTime = (endTime - startTime)/1000000000;
-        System.out.println("Total Time Taken: " + totalTime);
+        // numElements = 10000000;
+        // startTime = System.nanoTime();
+        // System.out.println("Merge Sort (Recursive):");
+        // System.out.println("Number of Elements: " + numElements);
+        // SortSearch recursiveMergeSorted = new SortSearch(numElements);
+        // recursiveMergeSorted.recursiveMergeSort(0, recursiveMergeSorted.intArray.length - 1);
+        // endTime = System.nanoTime();
+        // totalTime = (endTime - startTime)/1000000000.0;
+        // System.out.println("Total Time Taken: " + totalTime);
 
-        System.out.println();
-
-        int[] checkThis = {8, 8, 8, 8, 8, 8, 8, 8, 8};
+        // System.out.println();
 
         numElements = 20;
         startTime = System.nanoTime();
         System.out.println("Split Point:");
         System.out.println("Number of Elements: " + numElements);
         SortSearch splitPointed = new SortSearch(numElements);
-        System.out.println(Arrays.toString(splitPointed.intArray));
-        splitPointed.splitPoint(checkThis, 0, splitPointed.intArray.length - 1);
-        System.out.println(Arrays.toString(splitPointed.intArray));
+        System.out.println("Array Before: " + Arrays.toString(splitPointed.intArray));
+        System.out.println("Index value of split point: " + splitPointed.splitPoint(splitPointed.intArray, 0, splitPointed.intArray.length - 1));
+        System.out.println("Array After: " + Arrays.toString(splitPointed.intArray));
         endTime = System.nanoTime();
-        totalTime = (endTime - startTime)/1000000000;
+        totalTime = (endTime - startTime)/1000000000.0;
         System.out.println("Total Time Taken: " + totalTime);
         
     }
